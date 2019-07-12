@@ -1,0 +1,20 @@
+sudo yum update
+sudo yum install -y epel-release
+sudo yum install -y nginx
+sudo yum install -y nodejs
+sudo npm install -g gulp -v- gulp-cli
+sudo npm install -g gulp-cli
+
+sudo npm install -g git
+
+sudo usermod -a -G nginx prolis
+sudo mkdir -m775 /var/www
+sudo chown nginx:nginx /var/www
+  
+mkdir  /var/www/bps/dev -p
+sudo chown nginx:nginx /var/www/bps -R
+  
+cd /var/www/bps/dev
+npm init
+npm install --save-dev gulp
+npm install --save-dev gulp-replace del gulp-debug gulp-clean-css gulp-concat gulp-uglify-es gulp-touch fs

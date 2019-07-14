@@ -1,20 +1,28 @@
-sudo yum update
+sudo yum update -y
 sudo yum install -y epel-release
 sudo yum install -y nginx
+sudo yum install -y mc
+sudo curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash -
 sudo yum install -y nodejs
-sudo npm install -g gulp -v- gulp-cli
-sudo npm install -g gulp-cli
 
-sudo npm install -g git
+sudo yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install  git2u-all
 
-sudo usermod -a -G nginx prolis
-sudo mkdir -m775 /var/www
-sudo chown nginx:nginx /var/www
+sudo npm install --global gulp-cli
+
+
+
+sudo usermod -aG nginx,wheel prolis
+
+
   
-mkdir  /var/www/bps/dev -p
-sudo chown nginx:nginx /var/www/bps -R
+sudo mkdir /var/www/bps/dev -p
+sudo chmod -R 0775 /var/www
+sudo chown nginx:nginx /var/www -R
   
 cd /var/www/bps/dev
+
+git clone https://plab2k@github.com/plab2k/bpsimulator.git ./
 npm init
-npm install --save-dev gulp
-npm install --save-dev gulp-replace del gulp-debug gulp-clean-css gulp-concat gulp-uglify-es gulp-touch fs
+
+npm install --save-dev gulp gulp-replace del gulp-debug gulp-clean-css gulp-concat gulp-uglify-es gulp-touch fs
